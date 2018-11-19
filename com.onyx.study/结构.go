@@ -2,24 +2,22 @@ package main
 
 import "fmt"
 
-func main(){
+func main() {
 
-	bool1:=false
+	bool1 := false
 	if bool1 {
 		fmt.Println("true")
-	}else {
+	} else {
 		println("false")
 	}
 
-
-	if val:=10;val<100{
+	if val := 10; val < 100 {
 		println("<100")
-	}else {
+	} else {
 		println(">100")
 	}
 
-
-	num:=100
+	num := 100
 	switch num {
 
 	case 100:
@@ -31,22 +29,38 @@ func main(){
 
 	}
 
-	for i:=5;i>0 ;i--  {
-		fmt.Println("hello world,",i)
+	for i := 5; i > 0; i-- {
+		fmt.Println("hello world,", i)
 	}
 
-	for i:=5;i>0 ;i--  {
-		for j:=0;j<5 ;j++  {
-			println("循环中变量的值是:",i,j)
+	for i := 5; i > 0; i-- {
+		for j := 0; j < 5; j++ {
+			println("循环中变量的值是:", i, j)
 		}
 	}
 
+	str := "hello world"
 
-	str:="hello world"
-
-	for pos,char := range str{
-		fmt.Printf("内容是:%d -- %c",pos,char)
+	for pos, char := range str {
+		fmt.Printf("内容是:%d -- %c", pos, char)
 	}
 
+	if err := Chmod(0664); err != nil {
+		fmt.Println(err)
+		//return err
+	}
+
+	if value, ok := readData(); ok {
+		fmt.Println(value)
+
+	}
+
+}
+func Chmod(i int) interface{} {
+	return nil
+
+}
+func readData() (interface{}, bool) {
+	return nil, false
 
 }

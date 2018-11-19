@@ -13,6 +13,10 @@ func main() {
 	mapAssigned["a"] = 1
 	mapAssigned["b"] = 2
 
+	//map1 := make(map[keytype]valuetype)  。
+	map1 := make(map[string]int, 10)
+	fmt.Println(map1)
+
 	fmt.Println(mapAssigned)
 	fmt.Println(mapAssigned["a"])
 
@@ -31,5 +35,13 @@ func main() {
 	for key, value := range mapAssigned {
 		fmt.Println(key, value)
 	}
+
+	//map 类型的切片
+	items := make([]map[int]int, 5)
+	for i := range items {
+		items[i] = make(map[int]int, 1)
+		items[i][1] = 2
+	}
+	fmt.Printf("Version A: Value of items: %v\n", items)
 
 }

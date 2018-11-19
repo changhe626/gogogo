@@ -67,6 +67,16 @@ func main() {
 	}
 	fmt.Println(b)
 
+	fmt.Println("~~~~~~~~~~~~~~")
+	s1_from := []int{1, 2, 3}
+	s1_to := make([]int, 10)
+	//复制
+	n := copy(s1_to, s1_from)
+	fmt.Println(s1_to, "++", n)
+	//拼接
+	ints := append(s1_to, 1, 2, 7)
+	fmt.Println(ints)
+
 }
 
 //将切片传递给函数
