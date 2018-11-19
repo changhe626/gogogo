@@ -13,4 +13,46 @@ func main() {
 	num[0] = 9
 	fmt.Println(num[0], len(num))
 
+	fmt.Println("~~~~~")
+
+	var arr1 [5]int
+	//遍历1
+	for i := 1; i < len(arr1); i++ {
+		fmt.Println(arr1[i])
+	}
+	//遍历2
+	for index, value := range arr1 {
+		fmt.Println(index, value)
+	}
+
+	fmt.Println("~~~~~")
+
+	//遍历3
+	a := [...]string{"a", "b", "c", "d"}
+	for i := range a {
+		fmt.Println("Array item", i, "is", a[i])
+	}
+
+	b := a
+	b[0] = "zhaojun"
+	//赋值后,a,b的值不再相同
+	fmt.Println(a)
+	fmt.Println(b)
+
+	fmt.Println("~~~~~~~~~")
+	//只做部分的赋值
+	var arrKeyValue = [5]string{3: "Chris", 4: "Ron"}
+	fmt.Println(arrKeyValue)
+
+	sum(&num)
+
+}
+
+func sum(a *[4]int) {
+	sum := 0
+	for _, value := range a {
+		sum += value
+	}
+	fmt.Println(sum)
+
 }
