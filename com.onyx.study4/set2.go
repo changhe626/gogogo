@@ -8,7 +8,11 @@ time:2018年11月21日12:24:20
 import (
 	"reflect"
 	"fmt"
+	"sync"
 )
+
+//这里使用互斥锁
+var m *sync.Mutex= new(sync.Mutex)
 
 /**
 定义数据结构
@@ -29,11 +33,13 @@ func  NewSet() *set{
 添加元素
  */
 func (s *set)Add(v interface{}){
+	m.Lock()
 	//暂时先不考虑容量啥的问题
 	flag:=s.Contains(v)
 	if(!flag){
 		s.arr=append(s.arr,v)
 	}
+	defer m.Unlock()
 }
 
 /**
@@ -88,6 +94,7 @@ func (s *set) IsEmpty() bool {
 删除,成功为true,否则为false
  */
 func (s *set) Remove(v interface{}) bool {
+	m.Lock()
 	flag:=false
 	for index,value :=range s.arr  {
 		if(reflect.DeepEqual(value, v)){
@@ -95,6 +102,7 @@ func (s *set) Remove(v interface{}) bool {
 			s.arr[index]=nil
 		}
 	}
+	defer m.Unlock()
 	return flag
 }
 
@@ -103,7 +111,9 @@ func (s *set) Remove(v interface{}) bool {
 清除所有的元素
  */
 func (s *set) Clear(){
+	m.Lock()
 	copy(s.arr,make([]interface{},len(s.arr)))
+	defer m.Unlock()
 }
 
 /**
